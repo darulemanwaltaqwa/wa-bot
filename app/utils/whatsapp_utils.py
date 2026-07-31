@@ -378,7 +378,11 @@ def process_text_for_whatsapp(text):
 
 
 def process_whatsapp_message(body):
-    value = body["entry"][0]["changes"][0]["value"]
+    try:
+        value = body["entry"][0]["changes"][0]["value"]
+    except (KeyError, IndexError, TypeError):
+        return
+
     if value.get("statuses"):
         return
 
@@ -387,8 +391,10 @@ def process_whatsapp_message(body):
     if not contacts or not messages:
         return
 
-    wa_id = contacts[0]["wa_id"]
+    wa_id = contacts[0].get("wa_id")
     message = messages[0]
+    if not wa_id or not message:
+        return
 
     selected_option = parse_incoming_whatsapp_message(message)
     payload = build_menu_payload(wa_id, selected_option if selected_option else None)
@@ -402,11 +408,12 @@ def is_valid_whatsapp_message(body):
     if not body.get("object") or not body.get("entry"):
         return False
 
-    changes = body["entry"][0].get("changes") or []
-    if not changes:
+    try:
+        changes = body["entry"][0].get("changes") or []
+        value = changes[0].get("value") or {}
+    except (AttributeError, IndexError, TypeError):
         return False
 
-    value = changes[0].get("value") or {}
     if value.get("statuses"):
         return False
 
