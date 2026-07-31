@@ -15,7 +15,9 @@ class WhatsAppUtilsTests(unittest.TestCase):
         self.assertEqual(payload["type"], "interactive")
         self.assertEqual(payload["interactive"]["type"], "button")
         button_ids = [button["reply"]["id"] for button in payload["interactive"]["action"]["buttons"]]
+        button_titles = [button["reply"]["title"] for button in payload["interactive"]["action"]["buttons"]]
         self.assertEqual(button_ids, ["lang_urdu", "lang_pashto", "lang_english"])
+        self.assertEqual(button_titles, ["اردو", "پښتو", "English"])
 
     def test_localized_menu_payload_uses_urdu_copy(self):
         payload = json.loads(get_localized_menu_payload("12345", "ur"))
@@ -30,6 +32,10 @@ class WhatsAppUtilsTests(unittest.TestCase):
 
     def test_demo_response_text_handles_simple_option_id(self):
         self.assertIn("This is a demo response", get_demo_response_text("en", "1"))
+
+    def test_sub_centers_selection_returns_city_menu(self):
+        payload = json.loads(get_localized_menu_payload("12345", "ur"))
+        self.assertEqual(payload["interactive"]["action"]["sections"][0]["rows"][5]["id"], "opt_6_ur")
 
 
 if __name__ == "__main__":

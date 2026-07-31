@@ -6,8 +6,8 @@ from flask import current_app, jsonify
 
 
 LANGUAGE_BUTTONS = [
-    {"type": "reply", "reply": {"id": "lang_urdu", "title": "Urdu"}},
-    {"type": "reply", "reply": {"id": "lang_pashto", "title": "Pashto"}},
+    {"type": "reply", "reply": {"id": "lang_urdu", "title": "اردو"}},
+    {"type": "reply", "reply": {"id": "lang_pashto", "title": "پښتو"}},
     {"type": "reply", "reply": {"id": "lang_english", "title": "English"}},
 ]
 
@@ -92,7 +92,7 @@ def parse_incoming_whatsapp_message(message):
 def get_language_selection_payload(recipient):
     return get_interactive_button_input(
         recipient,
-        "Dar-ul-Eman Wa-At-Taqwa",
+        "Darul Eman Wal Taqwa",
         "برائے مہربانی اپنی زبان کا انتخاب کریں:\nPlease select your language:",
         LANGUAGE_BUTTONS,
     )
@@ -140,7 +140,7 @@ def get_localized_menu_payload(recipient, language):
     else:
         body_text = "Welcome! Please select an option from the menu below to proceed."
         button_text = "View Menu"
-        header_text = "Dar-ul-Eman Wa-At-Taqwa"
+        header_text = "Darul Eman Wal Taqwa"
         sections = [
             {
                 "title": "Main Menu",
@@ -164,7 +164,9 @@ def get_demo_response_text(language, option_id):
     option_key = ""
     if option_id:
         parts = option_id.split("_")
-        if len(parts) >= 2:
+        if len(parts) >= 2 and parts[0] in {"opt", "city"}:
+            option_key = parts[1]
+        elif len(parts) >= 2:
             option_key = parts[1]
         elif option_id.isdigit():
             option_key = option_id
@@ -221,6 +223,92 @@ def get_demo_response_text(language, option_id):
     return demo_messages["1"][lang]
 
 
+def get_sub_centers_menu_payload(recipient, language):
+    if language == "ur":
+        body_text = "برائے مہربانی اپنے شہر کا انتخاب کریں۔"
+        button_text = "شہر منتخب کریں"
+        header_text = "ذیلی مراکز"
+        sections = [
+            {
+                "title": "شہروں کی فہرست",
+                "rows": [
+                    {"id": "city_peshawar_ur", "title": "پشاور", "description": "پشاور کے ذیلی مرکز کی معلومات"},
+                    {"id": "city_mandra_ur", "title": "مندرہ", "description": "مندرہ کے ذیلی مرکز کی معلومات"},
+                    {"id": "city_islamabad_ur", "title": "اسلام آباد", "description": "اسلام آباد کے ذیلی مرکز کی معلومات"},
+                    {"id": "city_bannu_ur", "title": "بنوں", "description": "بنوں کے ذیلی مرکز کی معلومات"},
+                ],
+            }
+        ]
+    elif language == "ps":
+        body_text = "مهرباني د خپل ښار انتخاب وکړئ."
+        button_text = "ښار وټاکئ"
+        header_text = "فرعي مرکزونه"
+        sections = [
+            {
+                "title": "د ښارونو لیست",
+                "rows": [
+                    {"id": "city_peshawar_ps", "title": "پېښور", "description": "د پېښور فرعي مرکز معلومات"},
+                    {"id": "city_mandra_ps", "title": "مندره", "description": "د مندره فرعي مرکز معلومات"},
+                    {"id": "city_islamabad_ps", "title": "اسلام اباد", "description": "د اسلام اباد فرعي مرکز معلومات"},
+                    {"id": "city_bannu_ps", "title": "بنو", "description": "د بنو فرعي مرکز معلومات"},
+                ],
+            }
+        ]
+    else:
+        body_text = "Please select your city."
+        button_text = "Select City"
+        header_text = "Sub-Centers"
+        sections = [
+            {
+                "title": "Cities",
+                "rows": [
+                    {"id": "city_peshawar_en", "title": "Peshawar", "description": "Details for Peshawar sub-center"},
+                    {"id": "city_mandra_en", "title": "Mandra", "description": "Details for Mandra sub-center"},
+                    {"id": "city_islamabad_en", "title": "Islamabad", "description": "Details for Islamabad sub-center"},
+                    {"id": "city_bannu_en", "title": "Bannu", "description": "Details for Bannu sub-center"},
+                ],
+            }
+        ]
+
+    return get_interactive_list_input(recipient, body_text, button_text, sections, header_text=header_text)
+
+
+def get_city_response_text(language, option_id):
+    city = ""
+    if option_id:
+        parts = option_id.split("_")
+        if len(parts) >= 2:
+            city = parts[1]
+    city_messages = {
+        "peshawar": {
+            "ur": "پشاور کے ذیلی مرکز کے بارے میں معلومات جلدی ہی فراہم کی جائیں گی۔",
+            "ps": "د پېښور فرعي مرکز معلومات به ژر چمتو شي.",
+            "en": "Details for the Peshawar sub-center will be shared soon.",
+        },
+        "mandra": {
+            "ur": "مندرہ کے ذیلی مرکز کے بارے میں معلومات جلدی ہی فراہم کی جائیں گی۔",
+            "ps": "د مندره فرعي مرکز معلومات به ژر چمتو شي.",
+            "en": "Details for the Mandra sub-center will be shared soon.",
+        },
+        "islamabad": {
+            "ur": "اسلام آباد کے ذیلی مرکز کے بارے میں معلومات جلدی ہی فراہم کی جائیں گی۔",
+            "ps": "د اسلام اباد فرعي مرکز معلومات به ژر چمتو شي.",
+            "en": "Details for the Islamabad sub-center will be shared soon.",
+        },
+        "bannu": {
+            "ur": "بنوں کے ذیلی مرکز کے بارے میں معلومات جلدی ہی فراہم کی جائیں گی۔",
+            "ps": "د بنو فرعي مرکز معلومات به ژر چمتو شي.",
+            "en": "Details for the Bannu sub-center will be shared soon.",
+        },
+    }
+
+    lang = "en"
+    if language in {"ur", "ps", "en"}:
+        lang = language
+
+    return city_messages.get(city, city_messages["peshawar"])[lang]
+
+
 def build_menu_payload(recipient, selected_option=None):
     if not selected_option:
         return get_language_selection_payload(recipient)
@@ -231,13 +319,29 @@ def build_menu_payload(recipient, selected_option=None):
         language = "ur" if option == "lang_urdu" else "ps" if option == "lang_pashto" else "en"
         return get_localized_menu_payload(recipient, language)
 
+    if option.startswith("opt_6"):
+        language = "en"
+        if option.endswith("_ur"):
+            language = "ur"
+        elif option.endswith("_ps"):
+            language = "ps"
+        return get_sub_centers_menu_payload(recipient, language)
+
+    if option.startswith("city_"):
+        language = "en"
+        if option.endswith("_ur"):
+            language = "ur"
+        elif option.endswith("_ps"):
+            language = "ps"
+        return get_text_message_input(recipient, get_city_response_text(language, option))
+
     if option.startswith("opt_"):
         language = "en"
         if option.endswith("_ur"):
             language = "ur"
         elif option.endswith("_ps"):
             language = "ps"
-        return get_text_message_input(recipient, get_demo_response_text(language, option.split("_")[1]))
+        return get_text_message_input(recipient, get_demo_response_text(language, option))
 
     return get_language_selection_payload(recipient)
 
