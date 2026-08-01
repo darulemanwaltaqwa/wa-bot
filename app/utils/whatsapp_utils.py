@@ -86,7 +86,7 @@ def parse_incoming_whatsapp_message(message):
             return interactive["list_reply"].get("id") or interactive["list_reply"].get("title", "").strip()
     if "text" in message:
         return message["text"]["body"].strip()
-    return ""
+    return None
 
 
 def get_language_selection_payload(recipient):
@@ -382,7 +382,11 @@ def process_whatsapp_message(body):
     message = body["entry"][0]["changes"][0]["value"]["messages"][0]
 
     selected_option = parse_incoming_whatsapp_message(message)
-    payload = build_menu_payload(wa_id, selected_option if selected_option else None)
+    if selected_option is None:
+        logging.info("Unsupported incoming WhatsApp message type; no response sent.")
+        return
+
+    payload = build_menu_payload(wa_id, selected_option)
     send_message(payload)
 
 
@@ -390,11 +394,15 @@ def is_valid_whatsapp_message(body):
     """
     Check if the incoming webhook event has a valid WhatsApp message structure.
     """
-    return (
+    if not (
         body.get("object")
         and body.get("entry")
         and body["entry"][0].get("changes")
         and body["entry"][0]["changes"][0].get("value")
         and body["entry"][0]["changes"][0]["value"].get("messages")
         and body["entry"][0]["changes"][0]["value"]["messages"][0]
-    )
+    ):
+        return False
+
+    message = body["entry"][0]["changes"][0]["value"]["messages"][0]
+    return message.get("type") in {"text", "interactive"}

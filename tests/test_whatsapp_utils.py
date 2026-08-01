@@ -5,6 +5,7 @@ from app.utils.whatsapp_utils import (
     get_demo_response_text,
     get_language_selection_payload,
     get_localized_menu_payload,
+    parse_incoming_whatsapp_message,
 )
 
 
@@ -36,6 +37,10 @@ class WhatsAppUtilsTests(unittest.TestCase):
     def test_sub_centers_selection_returns_city_menu(self):
         payload = json.loads(get_localized_menu_payload("12345", "ur"))
         self.assertEqual(payload["interactive"]["action"]["sections"][0]["rows"][5]["id"], "opt_6_ur")
+
+    def test_parse_incoming_whatsapp_message_returns_none_for_unsupported_type(self):
+        message = {"image": {"mime_type": "image/jpeg"}}
+        self.assertIsNone(parse_incoming_whatsapp_message(message))
 
 
 if __name__ == "__main__":
