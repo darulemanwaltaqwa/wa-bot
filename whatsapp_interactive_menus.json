@@ -15,14 +15,14 @@
             "type": "reply",
             "reply": {
               "id": "lang_urdu",
-              "title": "Urdu"
+              "title": "اردو"
             }
           },
           {
             "type": "reply",
             "reply": {
               "id": "lang_pashto",
-              "title": "Pashto"
+              "title": "پښتو"
             }
           },
           {
@@ -49,9 +49,6 @@
       },
       "body": {
         "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nبراہِ کرم مطلوبہ خدمت کا انتخاب کریں:"
-      },
-      "footer": {
-        "text": "دارالایمان والتقویٰ - Darul-Eman Wal-Taqwa"
       },
       "action": {
         "button": "خدمات منتخب کریں",
@@ -129,9 +126,6 @@
       "body": {
         "text": "Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh\n\nPlease select the service you need:"
       },
-      "footer": {
-        "text": "Main Menu"
-      },
       "action": {
         "button": "Select Service",
         "sections": [
@@ -207,9 +201,6 @@
       },
       "body": {
         "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nمهرباني وکړئ لاندې خدمات وټاکئ:"
-      },
-      "footer": {
-        "text": "اصلي مینو"
       },
       "action": {
         "button": "خدمات وټاکئ",
