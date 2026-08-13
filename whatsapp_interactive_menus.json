@@ -5,39 +5,32 @@
     "to": "{{user_phone_number}}",
     "type": "interactive",
     "interactive": {
-      "type": "list",
-      "header": {
-        "type": "text",
-        "text": "Darul-Eman Wal-Taqwa"
-      },
+      "type": "button",
       "body": {
-        "text": "Welcome to the official WhatsApp account of Darul-Eman Wal-Taqwa. Please select your language.\n\nدارالایمان والتقویٰ کے آفیشل واٹس ایپ اکاؤنٹ میں خوش آمدید۔ اپنی زبان منتخب کریں۔\n\nد دارالایمان والتقویٰ رسمي واټساپ حساب ته ښه راغلاست. خپله ژبه وټاکئ."
-      },
-      "footer": {
-        "text": "Language Selection / زبان کا انتخاب / د ژبې انتخاب"
+        "text": "Welcome to Darul-Eman Wal-Taqwa. Please select your language.\n\nدارالایمان والتقویٰ میں خوش آمدید۔ اپنی زبان منتخب کریں۔\n\nدارالایمان والتقویٰ ته ښه راغلاست. خپله ژبه وټاکئ."
       },
       "action": {
-        "button": "Select Language",
-        "sections": [
+        "buttons": [
           {
-            "title": "Languages",
-            "rows": [
-              {
-                "id": "lang_urdu",
-                "title": "1️⃣ Urdu",
-                "description": "اردو کے لیے منتخب کریں"
-              },
-              {
-                "id": "lang_pashto",
-                "title": "2️⃣ Pashto",
-                "description": "د پښتو ژبې لپاره وټاکئ"
-              },
-              {
-                "id": "lang_english",
-                "title": "3️⃣ English",
-                "description": "Select for English"
-              }
-            ]
+            "type": "reply",
+            "reply": {
+              "id": "lang_urdu",
+              "title": "Urdu"
+            }
+          },
+          {
+            "type": "reply",
+            "reply": {
+              "id": "lang_pashto",
+              "title": "Pashto"
+            }
+          },
+          {
+            "type": "reply",
+            "reply": {
+              "id": "lang_english",
+              "title": "English"
+            }
           }
         ]
       }
@@ -58,7 +51,7 @@
         "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nبراہِ کرم مطلوبہ خدمت کا انتخاب کریں:"
       },
       "footer": {
-        "text": "مین مینو - Main Menu"
+        "text": "دارالایمان والتقویٰ - Darul-Eman Wal-Taqwa"
       },
       "action": {
         "button": "خدمات منتخب کریں",
@@ -68,53 +61,53 @@
             "rows": [
               {
                 "id": "opt_1_ur",
-                "title": "1. بیانات",
-                "description": "بیانات اور گروپس کے لنکس"
+                "title": "بیانات",
+                "description": "گروپس اور لنکس"
               },
               {
                 "id": "opt_2_ur",
-                "title": "2. خانقاہ",
+                "title": "خانقاہ",
                 "description": "مرکز کی معلومات"
               },
               {
                 "id": "opt_3_ur",
-                "title": "3. جامعہ زکریا",
-                "description": "جامعہ کی معلومات"
+                "title": "جامعہ زکریا",
+                "description": "جامعہ معلومات"
               },
               {
                 "id": "opt_4_ur",
-                "title": "4. ذیلی مراکز",
-                "description": "دیگر شاخوں کی معلومات"
+                "title": "ذیلی مراکز",
+                "description": "شاخوں کی معلومات"
               },
               {
                 "id": "opt_5_ur",
-                "title": "5. اجتماعات",
+                "title": "اجتماعات",
                 "description": "سالانہ اجتماعات"
               },
               {
                 "id": "opt_6_ur",
-                "title": "6. دارالافتاء",
+                "title": "دارالافتاء",
                 "description": "سوالات کے جوابات"
               },
               {
                 "id": "opt_7_ur",
-                "title": "7. مکاتب قرآنیہ",
+                "title": "مکاتب قرآنیہ",
                 "description": "قرآنی تعلیم"
               },
               {
                 "id": "opt_8_ur",
-                "title": "8. مکتبہ",
+                "title": "مکتبہ",
                 "description": "کتابوں کا آرڈر"
               },
               {
                 "id": "opt_9_ur",
-                "title": "9. مالی اعانت",
-                "description": "حمایت کی معلومات"
+                "title": "مالی اعانت",
+                "description": "حمایت کریں"
               },
               {
                 "id": "opt_0_ur",
-                "title": "0. نمائندہ",
-                "description": "براہِ راست بات کریں"
+                "title": "نمائندہ",
+                "description": "براہِ راست رابطہ"
               }
             ]
           }
@@ -147,52 +140,52 @@
             "rows": [
               {
                 "id": "opt_1_en",
-                "title": "1. Lectures",
+                "title": "Lectures",
                 "description": "Islamic lectures"
               },
               {
                 "id": "opt_2_en",
-                "title": "2. Main Center",
-                "description": "Khanqah Info"
+                "title": "Main Center",
+                "description": "Khanqah info"
               },
               {
                 "id": "opt_3_en",
-                "title": "3. Jamia Zakariya",
+                "title": "Jamia Zakariya",
                 "description": "Educational info"
               },
               {
                 "id": "opt_4_en",
-                "title": "4. Sub-Centers",
+                "title": "Sub-Centers",
                 "description": "Other branches"
               },
               {
                 "id": "opt_5_en",
-                "title": "5. Gatherings",
+                "title": "Gatherings",
                 "description": "Annual events"
               },
               {
                 "id": "opt_6_en",
-                "title": "6. Dar-ul-Ifta",
-                "description": "Ask questions"
+                "title": "Dar-ul-Ifta",
+                "description": "Ask scholars"
               },
               {
                 "id": "opt_7_en",
-                "title": "7. Quranic Schools",
+                "title": "Quranic Schools",
                 "description": "Quran education"
               },
               {
                 "id": "opt_8_en",
-                "title": "8. Library",
+                "title": "Library",
                 "description": "Order books"
               },
               {
                 "id": "opt_9_en",
-                "title": "9. Donations",
-                "description": "Support info"
+                "title": "Donations",
+                "description": "Support us"
               },
               {
                 "id": "opt_0_en",
-                "title": "0. Representative",
+                "title": "Representative",
                 "description": "Talk directly"
               }
             ]
@@ -216,7 +209,7 @@
         "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nمهرباني وکړئ لاندې خدمات وټاکئ:"
       },
       "footer": {
-        "text": "اصلي مینو - Main Menu"
+        "text": "اصلي مینو"
       },
       "action": {
         "button": "خدمات وټاکئ",
@@ -226,53 +219,53 @@
             "rows": [
               {
                 "id": "opt_1_ps",
-                "title": "1. بیانات",
-                "description": "د بیانونو لنکونه"
+                "title": "بیانات",
+                "description": "لنکونه"
               },
               {
                 "id": "opt_2_ps",
-                "title": "2. خانقاه",
-                "description": "د مرکز معلومات"
+                "title": "خانقاه",
+                "description": "معلومات"
               },
               {
                 "id": "opt_3_ps",
-                "title": "3. جامعه زکریا",
-                "description": "د جامعې معلومات"
+                "title": "جامعه زکریا",
+                "description": "تعلیم معلومات"
               },
               {
                 "id": "opt_4_ps",
-                "title": "4. فرعي مراکز",
-                "description": "نورو شاخونو معلومات"
+                "title": "فرعي مراکز",
+                "description": "شاخونو معلومات"
               },
               {
                 "id": "opt_5_ps",
-                "title": "5. غونډې",
+                "title": "غونډې",
                 "description": "کلنۍ غونډې"
               },
               {
                 "id": "opt_6_ps",
-                "title": "6. دارالافتاء",
-                "description": "پوښتنې کولو لپاره"
+                "title": "دارالافتاء",
+                "description": "پوښتنې کولو"
               },
               {
                 "id": "opt_7_ps",
-                "title": "7. قرآني مکتبونه",
+                "title": "قرآني مکتبونه",
                 "description": "قرآن تعلیم"
               },
               {
                 "id": "opt_8_ps",
-                "title": "8. کتابونه",
+                "title": "کتابونه",
                 "description": "د کتابونو غوښتنه"
               },
               {
                 "id": "opt_9_ps",
-                "title": "9. مالي مرسته",
-                "description": "د مرستې معلومات"
+                "title": "مالي مرسته",
+                "description": "مالي حمایت"
               },
               {
                 "id": "opt_0_ps",
-                "title": "0. نماینده",
-                "description": "براې راست خبرې"
+                "title": "نماینده",
+                "description": "براې راست رابطہ"
               }
             ]
           }
@@ -282,9 +275,9 @@
   },
   "responses_data": {
     "opt_1": {
-      "urdu": "📚 *بیانات و واٹس ایپ گروپس*\n\nکیا آپ ہمارے بیانات سننا چاہتے ہیں؟ نیچے دیے گئے لنک کے ذریعے ہمارے واٹس ایپ گروپ میں شامل ہوں:\nhttps://chat.whatsapp.com/IKM4GA5BHz1GgXirpdJU7C\n\n📖 *واٹس ایپ چینل*\nہمارا ایک واٹس ایپ چینل بھی ہے جہاں ہم روزانہ حضرت سید مختار الدین شاہ (رحمتہ اللہ علیہ) کے اقوال، ان کی کتابوں کے اقتباسات اور بہت کچھ شیئر کرتے ہیں:\nhttps://whatsapp.com/channel/0029Va7qZqcC1FuFU1NHep2V\n\n🌐 *ہمیں سوشل میڈیا پر فالو کریں*\n- **فیس بک:** https://www.facebook.com/darulemanwaltaqwa/\n- **یوٹیوب:** https://www.youtube.com/@darulemanwaltaqwa\n- **ٹویٹر/ایکس:** @daruleman_off\n\n✨ رابطے میں رہیں اور ہمارے بیانات، یاد دہانیوں اور اسلامی مواد سے فائدہ اٹھائیں۔ براہ کرم دوسروں کے ساتھ بھی شیئر کریں تاکہ وہ بھی فائدہ اٹھا سکیں۔",
-      "english": "### Join Us & Stay Connected\n\n📚 **Want to listen to our lectures?**\nJoin our WhatsApp group using the link below:\nhttps://chat.whatsapp.com/IKM4GA5BHz1GgXirpdJU7C\n\n📖 **WhatsApp Channel**\nWe also have a WhatsApp Channel where we share daily quotes from **Hazrat Syed Mukhtaruddin Shah (R.H.)**, excerpts from his books, and much more:\nhttps://whatsapp.com/channel/0029Va7qZqcC1FuFU1NHep2V\n\n🌐 **Follow Us on Social Media**\n- **Facebook:** https://www.facebook.com/darulemanwaltaqwa/\n- **YouTube:** https://www.youtube.com/@darulemanwaltaqwa\n- **Twitter/X:** @daruleman_off\n\n✨ **Stay connected and benefit from our lectures, reminders, and Islamic content. Please share with others so they can benefit too.**",
-      "pashto": "📚 *بیانونه او واټساپ ګروپونه*\n\nایا غواړئ زموږ بیانونه واورئ؟ لاندې لینک له لارې زموږ په واټساپ ګروپ کې شامل شئ:\nhttps://chat.whatsapp.com/IKM4GA5BHz1GgXirpdJU7C\n\n📖 *واټساپ چینل*\nزموږ واټساپ چینل تعقیب کړئ چیرې چې موږ روزانه د حضرت سید مختار الدین شاہ (رحمتہ اللہ علیہ) ارشادات او اسلامي معلومات شریکوو:\nhttps://whatsapp.com/channel/0029Va7qZqcC1FuFU1NHep2V\n\n🌐 *زموږ د سوشل میډیا پر تعقیب کړئ*\n- **فیس بک:** https://www.facebook.com/darulemanwaltaqwa/\n- **یوټیوب:** https://www.youtube.com/@darulemanwaltaqwa\n- **ټویټر/ایکس:** @daruleman_off\n\n✨ په اړیکه کې اوسئ او له اسلامي موادو ګټه واخلئ. مهرباني وکړئ له نورو سره یې هم شریک کړئ."
+      "urdu": "گروپ لنک:\nhttps://chat.whatsapp.com/IKM4GA5BHz1GgXirpdJU7C",
+      "english": "Join:\nhttps://chat.whatsapp.com/IKM4GA5BHz1GgXirpdJU7C",
+      "pashto": "لینک:\nhttps://chat.whatsapp.com/IKM4GA5BHz1GgXirpdJU7C"
     },
     "opt_2": {
       "urdu": "⏳ تفصیلا ت جلد دستیاب ہوں گی۔",
@@ -312,9 +305,9 @@
       "pashto": "⏳ معلومات به ژر تر ژره اضافه شي."
     },
     "opt_7": {
-      "urdu": "📖 *ادارہ مکاتبِ قرآنیہ*\n\nادارہ مکاتبِ قرآنیہ کی بنیاد مختارالامۃ حضرت مفتی سید مختار الدین شاہ صاحبؒ کی ہدایت پر رکھی گئی۔ یہ ادارہ نئی نسل کے ایمانی و فکری تحفظ اور درست تجوید کے ساتھ قرآنی تعلیم و تربیت کے لیے کوشاں ہے۔\n\n🔹 **نصب العین:** ہر مسلمان بچے اور نوجوان کے دل میں اللہ تعالیٰ کی معرفت، رسول ﷺ کی محبت اور قرآن پاک کی عظمت راسخ کرنا۔\n\n📞 **رابطہ و معلومات:**\n🔸 مرکزی دفتر: دارالایمان و التقویٰ کربوغہ شریف\n🔸 رابطہ نمبر: 0332-9634960\n🔸 واٹس ایپ چینل: https://whatsapp.com/channel/0029VbDKCUt9mrGih9vUxn16",
-      "english": "📖 **Quranic Schools Institute (Makatib-e-Qurania)**\n\nFounded under the guidance of Hazrat Mufti Syed Mukhtaruddin Shah (R.H.) to safeguard the faith and values of the young generation through proper Quranic education with Tajweed.\n\n🔹 **Mission:** To instill divine awareness, love for the Prophet ﷺ, and respect for the Holy Quran in every youth.\n\n📞 **Contact & Information:**\n🔸 Central Office: Darul-Eman Wal-Taqwa Karbogha Sharif\n🔸 Contact Number: 0332-9634960\n🔸 WhatsApp Channel: https://whatsapp.com/channel/0029VbDKCUt9mrGih9vUxn16",
-      "pashto": "📖 *د قرآني مکتبونو اداره*\n\nدا اداره د حضرت مفتی سید مختار الدین شاه صاحبؒ په لارښوونه د نوي نسل ایماني او فکري روزنې لپاره جوړه شوې ده۔ د صحیح قرآن خوندیتاب اور درست تجوید سره قرآني تعلیم فراهم کوي۔\n\n🔹 **مقصد:** هر نوجوان د الله تعالیٰ معرفت، رسول ﷺ کی محبت او قرآن پاک کي عظمت دل کې راسخ کول۔\n\n📞 *اړیکه او معلومات:*\nمرکزي دفتر: دارالایمان والتقویٰ کربوغه شریف\nد اړیکې شمیره: 0332-9634960\nواټساپ چینل: https://whatsapp.com/channel/0029VbDKCUt9mrGih9vUxn16"
+      "urdu": "مکاتب قرآنیہ\nہاتف: 0332-9634960",
+      "english": "Quranic Schools\nPhone: 0332-9634960",
+      "pashto": "قرآني مکتبونه\nتماس: 0332-9634960"
     },
     "opt_8": {
       "urdu": "⏳ تفصیلا ت جلد دستیاب ہوں گی۔",
@@ -322,14 +315,14 @@
       "pashto": "⏳ معلومات به ژر تر ژره اضافه شي."
     },
     "opt_9": {
-      "urdu": "💰 *مالی اعانت*\n\nشعبہ مالیات کے نگران:\nمرکز دارالایمان والتقوی کربوغہ شریف اور تحریک ایمان و تقوی کے ماتحت اعتکاف اجتماعات، مراکز کی تعمیر میں اپنا حصہ ڈالنے کے لیے درج ذیل نمبر پر رابطہ کریں:\n\n👤 **مولانا محمد جعفر صاحب**\n📞 +92-335-9253416",
-      "english": "💰 **Financial Assistance / Support**\n\nFinance Department Supervisor:\nTo contribute towards Iftikaf gatherings, events, and construction of centers under Markaz Darul-Eman Wal-Taqwa Karbogha Sharif, please contact:\n\n👤 **Maulana Muhammad Jafar Sahib**\n📞 +92-335-9253416",
-      "pashto": "💰 *مالي مرسته*\n\nد مالي چارو مسؤل:\nد مرکز دارالایمان والتقویٰ کربوغې شریف او اعتکاف غونډو او مرکزونو په جوړولو کې د برخه اخیستلو لپاره له لاندې شمیرې سره اړیکه ونیسئ:\n\n👤 *مولانا محمد جعفر صاحب*\n📞 +92-335-9253416"
+      "urdu": "مالی مدد\nمولانا جعفر: +92-335-9253416",
+      "english": "Financial Support\nMaulana Jafar: +92-335-9253416",
+      "pashto": "مالي مرسته\nمولانا جعفر: +92-335-9253416"
     },
     "opt_0": {
-      "urdu": "📞 *نمائندہ سے رابطہ*\n\nبراہِ راست نمائندہ سے بات کرنے کے لیے رابطہ کریں:\n📱 0317-7930224",
-      "english": "📞 *Speak with a Representative*\n\nTo connect directly with a representative, please contact:\n📱 0317-7930224",
-      "pashto": "📞 *له استازي سره خبرې وکړئ*\n\nبراې راست له نماینده سره د خبرو کولو لپاره په لاندې شمیره اړیکه ونیسئ:\n📱 0317-7930224"
+      "urdu": "نمائندہ\n0317-7930224",
+      "english": "Representative\n0317-7930224",
+      "pashto": "نماینده\n0317-7930224"
     }
   }
 }
