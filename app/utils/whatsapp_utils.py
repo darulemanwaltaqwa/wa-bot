@@ -394,14 +394,6 @@ def build_menu_payload(recipient, selected_option=None):
         language = "ur" if option == "lang_urdu" else "ps" if option == "lang_pashto" else "en"
         return get_localized_menu_payload(recipient, language)
 
-    if option.startswith("opt_6"):
-        language = "en"
-        if option.endswith("_ur"):
-            language = "ur"
-        elif option.endswith("_ps"):
-            language = "ps"
-        return get_sub_centers_menu_payload(recipient, language)
-
     if option.startswith("city_"):
         language = "en"
         if option.endswith("_ur"):
