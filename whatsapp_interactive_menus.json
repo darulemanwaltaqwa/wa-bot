@@ -17,25 +17,25 @@
         "text": "Language Selection / زبان کا انتخاب / د ژبې انتخاب"
       },
       "action": {
-        "button": "Select / منتخب کریں / وټاکئ",
+        "button": "Select Language",
         "sections": [
           {
-            "title": "Languages / زبانیں / ژبې",
+            "title": "Languages",
             "rows": [
               {
                 "id": "lang_urdu",
-                "title": "1️⃣ Urdu (اردو)",
-                "description": "اردو زبان کے لیے منتخب کریں"
+                "title": "1️⃣ Urdu",
+                "description": "اردو کے لیے منتخب کریں"
               },
               {
                 "id": "lang_pashto",
-                "title": "2️⃣ Pashto (پښتو)",
+                "title": "2️⃣ Pashto",
                 "description": "د پښتو ژبې لپاره وټاکئ"
               },
               {
                 "id": "lang_english",
                 "title": "3️⃣ English",
-                "description": "Select for English language"
+                "description": "Select for English"
               }
             ]
           }
@@ -58,7 +58,7 @@
         "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nبراہِ کرم مطلوبہ خدمت کا انتخاب کریں:"
       },
       "footer": {
-        "text": "مین مینو - Darul-Eman Wal-Taqwa"
+        "text": "مین مینو - Main Menu"
       },
       "action": {
         "button": "خدمات منتخب کریں",
@@ -67,54 +67,54 @@
             "title": "خدمات کی فہرست",
             "rows": [
               {
-                "id": "opt_1",
-                "title": "1. بیانات (خطبات)",
-                "description": "بیانات اور گروپس کے لنکس حاصل کریں"
+                "id": "opt_1_ur",
+                "title": "1. بیانات",
+                "description": "بیانات اور گروپس کے لنکس"
               },
               {
-                "id": "opt_2",
-                "title": "2. خانقاہ کربوغہ شریف",
-                "description": "مرکز خانقاہ دارالایمان والتقویٰ کی معلومات"
+                "id": "opt_2_ur",
+                "title": "2. خانقاہ",
+                "description": "مرکز کی معلومات"
               },
               {
-                "id": "opt_3",
+                "id": "opt_3_ur",
                 "title": "3. جامعہ زکریا",
-                "description": "جامعہ زکریا کربوغہ شریف کی تعلیمی معلومات"
+                "description": "جامعہ کی معلومات"
               },
               {
-                "id": "opt_4",
+                "id": "opt_4_ur",
                 "title": "4. ذیلی مراکز",
-                "description": "پاکستان بھر میں ذیلی مراکز کی تفصیلات"
+                "description": "دیگر شاخوں کی معلومات"
               },
               {
-                "id": "opt_5",
-                "title": "5. سالانہ اجتماعات",
-                "description": "مرکزی و علاقائی اجتماعات کی تفصیلات"
+                "id": "opt_5_ur",
+                "title": "5. اجتماعات",
+                "description": "سالانہ اجتماعات"
               },
               {
-                "id": "opt_6",
+                "id": "opt_6_ur",
                 "title": "6. دارالافتاء",
-                "description": "دارالافتاء کربوغہ شریف سے سوال پوچھیں"
+                "description": "سوالات کے جوابات"
               },
               {
-                "id": "opt_7",
-                "title": "7. مکاتبِ قرآنیہ",
-                "description": "ادارہ مکاتبِ قرآنیہ سے متعلق معلومات"
+                "id": "opt_7_ur",
+                "title": "7. مکاتب قرآنیہ",
+                "description": "قرآنی تعلیم"
               },
               {
-                "id": "opt_8",
-                "title": "8. مکتبہ دارالایمان",
-                "description": "مکتبہ سے گھر بیٹھے کتابیں منگوائیں"
+                "id": "opt_8_ur",
+                "title": "8. مکتبہ",
+                "description": "کتابوں کا آرڈر"
               },
               {
-                "id": "opt_9",
+                "id": "opt_9_ur",
                 "title": "9. مالی اعانت",
-                "description": "مالی معاونت اور بینک تفصیلات"
+                "description": "حمایت کی معلومات"
               },
               {
-                "id": "opt_0",
-                "title": "0. نمائندہ سے رابطہ",
-                "description": "براہِ راست نمائندہ سے بات کریں"
+                "id": "opt_0_ur",
+                "title": "0. نمائندہ",
+                "description": "براہِ راست بات کریں"
               }
             ]
           }
@@ -137,7 +137,7 @@
         "text": "Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh\n\nPlease select the service you need:"
       },
       "footer": {
-        "text": "Main Menu - دارالایمان والتقویٰ"
+        "text": "Main Menu"
       },
       "action": {
         "button": "Select Service",
@@ -146,54 +146,54 @@
             "title": "Main Services",
             "rows": [
               {
-                "id": "opt_1",
-                "title": "1. Lectures (Bayaans)",
-                "description": "Receive Islamic lectures on WhatsApp"
+                "id": "opt_1_en",
+                "title": "1. Lectures",
+                "description": "Islamic lectures"
               },
               {
-                "id": "opt_2",
-                "title": "2. Main Center (Khanqah)",
-                "description": "Information on Khanqah Karbogha Sharif"
+                "id": "opt_2_en",
+                "title": "2. Main Center",
+                "description": "Khanqah Info"
               },
               {
-                "id": "opt_3",
+                "id": "opt_3_en",
                 "title": "3. Jamia Zakariya",
-                "description": "Educational details for Jamia Zakariya"
+                "description": "Educational info"
               },
               {
-                "id": "opt_4",
+                "id": "opt_4_en",
                 "title": "4. Sub-Centers",
-                "description": "Details of sub-centers across Pakistan"
+                "description": "Other branches"
               },
               {
-                "id": "opt_5",
-                "title": "5. Annual Gatherings",
-                "description": "Central and regional annual Ijtimaas"
+                "id": "opt_5_en",
+                "title": "5. Gatherings",
+                "description": "Annual events"
               },
               {
-                "id": "opt_6",
+                "id": "opt_6_en",
                 "title": "6. Dar-ul-Ifta",
-                "description": "Ask questions to Dar-ul-Ifta scholars"
+                "description": "Ask questions"
               },
               {
-                "id": "opt_7",
+                "id": "opt_7_en",
                 "title": "7. Quranic Schools",
-                "description": "Information about Quranic Makatib"
+                "description": "Quran education"
               },
               {
-                "id": "opt_8",
-                "title": "8. Library & Books",
-                "description": "Order books from Maktaba Dar-ul-Aiman"
+                "id": "opt_8_en",
+                "title": "8. Library",
+                "description": "Order books"
               },
               {
-                "id": "opt_9",
-                "title": "9. Financial Support",
-                "description": "Bank account details for assistance"
+                "id": "opt_9_en",
+                "title": "9. Donations",
+                "description": "Support info"
               },
               {
-                "id": "opt_0",
+                "id": "opt_0_en",
                 "title": "0. Representative",
-                "description": "Speak directly with a representative"
+                "description": "Talk directly"
               }
             ]
           }
@@ -213,10 +213,10 @@
         "text": "دارالایمان والتقویٰ"
       },
       "body": {
-        "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nمهرباني وکړئ لاندې له مینو څخه خپله اړینه برخه وټاکئ:"
+        "text": "السلام علیکم و رحمة اللہ و برکاتہ\n\nمهرباني وکړئ لاندې خدمات وټاکئ:"
       },
       "footer": {
-        "text": "اصلي مینو - Darul-Eman Wal-Taqwa"
+        "text": "اصلي مینو - Main Menu"
       },
       "action": {
         "button": "خدمات وټاکئ",
@@ -225,54 +225,54 @@
             "title": "د خدماتو لړلیک",
             "rows": [
               {
-                "id": "opt_1",
-                "title": "1. بیانات (خطبات)",
-                "description": "د بیانونو ترلاسه کولو لپاره لینکونه"
+                "id": "opt_1_ps",
+                "title": "1. بیانات",
+                "description": "د بیانونو لنکونه"
               },
               {
-                "id": "opt_2",
-                "title": "2. خانقاه کربوغه شریف",
-                "description": "د مرکزي خانقاه بشپړ معلومات"
+                "id": "opt_2_ps",
+                "title": "2. خانقاه",
+                "description": "د مرکز معلومات"
               },
               {
-                "id": "opt_3",
+                "id": "opt_3_ps",
                 "title": "3. جامعه زکریا",
-                "description": "د جامعې زکریا کربوغې شریف تعلیمي معلومات"
+                "description": "د جامعې معلومات"
               },
               {
-                "id": "opt_4",
-                "title": "4. فرعي مرکزونه",
-                "description": "په ټول پاکستان کې د فرعي مرکزونو معلومات"
+                "id": "opt_4_ps",
+                "title": "4. فرعي مراکز",
+                "description": "نورو شاخونو معلومات"
               },
               {
-                "id": "opt_5",
-                "title": "5. کلنۍ غونډې",
-                "description": "د مرکزي او سیمه ییزو غونډو تفصیلات"
+                "id": "opt_5_ps",
+                "title": "5. غونډې",
+                "description": "کلنۍ غونډې"
               },
               {
-                "id": "opt_6",
+                "id": "opt_6_ps",
                 "title": "6. دارالافتاء",
-                "description": "د دارالافتاء څخه د پوښتنو کولو لپاره"
+                "description": "پوښتنې کولو لپاره"
               },
               {
-                "id": "opt_7",
+                "id": "opt_7_ps",
                 "title": "7. قرآني مکتبونه",
-                "description": "د قرآني مکتبونو ادارې معلومات"
+                "description": "قرآن تعلیم"
               },
               {
-                "id": "opt_8",
-                "title": "8. کتابونه او مواد",
-                "description": "له مکتبې څخه کور ته د کتابونو غوښتلو لپاره"
+                "id": "opt_8_ps",
+                "title": "8. کتابونه",
+                "description": "د کتابونو غوښتنه"
               },
               {
-                "id": "opt_9",
+                "id": "opt_9_ps",
                 "title": "9. مالي مرسته",
-                "description": "د مالي مرستې او بانکي حساب جزیات"
+                "description": "د مرستې معلومات"
               },
               {
-                "id": "opt_0",
-                "title": "0. له استازي سره خبرې",
-                "description": "له نماینده سره د خبرو کولو لپاره"
+                "id": "opt_0_ps",
+                "title": "0. نماینده",
+                "description": "براې راست خبرې"
               }
             ]
           }
