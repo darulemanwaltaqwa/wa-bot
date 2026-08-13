@@ -2,7 +2,17 @@ import json
 import logging
 import re
 import requests
+import os
 from flask import current_app, jsonify
+
+# Load interactive menus from JSON
+MENUS_FILE = os.path.join(os.path.dirname(__file__), '../../whatsapp_interactive_menus.json')
+try:
+    with open(MENUS_FILE, 'r', encoding='utf-8') as f:
+        INTERACTIVE_MENUS = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    INTERACTIVE_MENUS = {}
+    logging.warning(f"Could not load interactive menus from {MENUS_FILE}")
 
 
 LANGUAGE_BUTTONS = [
@@ -90,12 +100,44 @@ def parse_incoming_whatsapp_message(message):
 
 
 def get_language_selection_payload(recipient):
+    # Try to use menu from JSON, fallback to hardcoded
+    if INTERACTIVE_MENUS and 'language_selection_menu' in INTERACTIVE_MENUS:
+        menu = INTERACTIVE_MENUS['language_selection_menu'].copy()
+        menu['to'] = recipient
+        return json.dumps(menu)
+    
+    # Fallback to original method
     return get_interactive_button_input(
         recipient,
         "Darul Eman Wal Taqwa",
         "برائے مہربانی اپنی زبان کا انتخاب کریں:\nPlease select your language:",
         LANGUAGE_BUTTONS,
     )
+
+
+def get_response_from_json(language, option_id):
+    """Get response message from JSON file based on language and option ID"""
+    if not INTERACTIVE_MENUS or 'responses_data' not in INTERACTIVE_MENUS:
+        return None
+    
+    responses_data = INTERACTIVE_MENUS['responses_data']
+    
+    # Extract option number (e.g., "opt_1" from "opt_1_ur")
+    option_key = None
+    if option_id:
+        # Handle formats like "opt_1", "opt_1_ur", "opt_1_en"
+        parts = option_id.split('_')
+        if parts[0] == 'opt' and len(parts) >= 2:
+            option_key = f"opt_{parts[1]}"
+    
+    if option_key and option_key in responses_data:
+        lang_map = {'ur': 'urdu', 'ps': 'pashto', 'en': 'english'}
+        lang_key = lang_map.get(language, 'english')
+        
+        if lang_key in responses_data[option_key]:
+            return responses_data[option_key][lang_key]
+    
+    return None
 
 
 def get_localized_menu_payload(recipient, language):
@@ -161,6 +203,13 @@ def get_localized_menu_payload(recipient, language):
 
 
 def get_demo_response_text(language, option_id):
+    """First tries to get response from JSON file, then falls back to demo messages"""
+    # Try JSON file first
+    json_response = get_response_from_json(language, option_id)
+    if json_response:
+        return json_response
+    
+    # Fallback to demo messages
     option_key = ""
     if option_id:
         parts = option_id.split("_")
