@@ -103,8 +103,12 @@ def get_language_selection_payload(recipient):
     # Try to use menu from JSON, fallback to hardcoded
     if INTERACTIVE_MENUS and 'language_selection_menu' in INTERACTIVE_MENUS:
         menu = INTERACTIVE_MENUS['language_selection_menu'].copy()
-        menu['to'] = recipient
-        return json.dumps(menu)
+        menu['to'] = recipient  # Replace template with actual recipient
+        # Ensure encoding is correct
+        try:
+            return json.dumps(menu, ensure_ascii=False)
+        except Exception as e:
+            logging.error(f"Error encoding menu to JSON: {e}")
     
     # Fallback to original method
     return get_interactive_button_input(
@@ -141,6 +145,28 @@ def get_response_from_json(language, option_id):
 
 
 def get_localized_menu_payload(recipient, language):
+    # Try to get menu from JSON file first
+    if INTERACTIVE_MENUS:
+        lang_menu_key = None
+        if language == "ur":
+            lang_menu_key = 'urdu_main_menu'
+        elif language == "ps":
+            lang_menu_key = 'pashto_main_menu'
+        else:
+            lang_menu_key = 'english_main_menu'
+        
+        if lang_menu_key in INTERACTIVE_MENUS:
+            menu = INTERACTIVE_MENUS[lang_menu_key].copy()
+            menu['to'] = recipient
+            try:
+                payload = json.dumps(menu, ensure_ascii=False)
+                logging.info(f"Using menu from JSON for language: {language}")
+                return payload
+            except Exception as e:
+                logging.error(f"Error encoding {lang_menu_key} to JSON: {e}")
+    
+    # Fallback to original hardcoded method
+    logging.info(f"Using fallback hardcoded menu for language: {language}")
     if language == "ur":
         body_text = "محترم صارف! خوش آمدید۔ آپ کی رہنمائی کے لیے درج ذیل معلومات دستیاب ہیں۔ برائے مہربانی مطلوبہ آپشن کا انتخاب کریں۔"
         button_text = "فہرست دیکھیں"
@@ -404,13 +430,25 @@ def send_message(data):
     url = f"https://graph.facebook.com/{current_app.config['VERSION']}/{current_app.config['PHONE_NUMBER_ID']}/messages"
 
     try:
-        response = requests.post(url, data=data, headers=headers, timeout=10)
+        # Parse JSON string to dict, then let requests handle JSON encoding
+        payload = json.loads(data) if isinstance(data, str) else data
+        logging.info(f"Sending payload to Facebook: {json.dumps(payload, ensure_ascii=False)}")
+        response = requests.post(url, json=payload, headers=headers, timeout=10)
         response.raise_for_status()
     except requests.Timeout:
         logging.error("Timeout occurred while sending message")
         return jsonify({"status": "error", "message": "Request timed out"}), 408
     except requests.RequestException as e:
-        logging.error(f"Request failed due to: {e}")
+        # Log the detailed error response from Facebook
+        error_msg = f"Request failed due to: {e}"
+        if hasattr(e, 'response') and e.response is not None:
+            try:
+                error_detail = e.response.json()
+                logging.error(f"{error_msg}. Facebook API response: {json.dumps(error_detail, ensure_ascii=False)}")
+            except:
+                logging.error(f"{error_msg}. Response body: {e.response.text}")
+        else:
+            logging.error(error_msg)
         return jsonify({"status": "error", "message": "Failed to send message"}), 500
     else:
         log_http_response(response)
@@ -427,14 +465,19 @@ def process_text_for_whatsapp(text):
 
 
 def process_whatsapp_message(body):
-    wa_id = body["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"]
-    message = body["entry"][0]["changes"][0]["value"]["messages"][0]
+    try:
+        wa_id = body["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"]
+        message = body["entry"][0]["changes"][0]["value"]["messages"][0]
+    except (KeyError, IndexError) as e:
+        logging.error(f"Failed to extract message data from webhook body: {e}")
+        return
 
     selected_option = parse_incoming_whatsapp_message(message)
     if selected_option is None:
         logging.info("Unsupported incoming WhatsApp message type; no response sent.")
         return
 
+    logging.info(f"Processing message from {wa_id}: {selected_option}")
     payload = build_menu_payload(wa_id, selected_option)
     send_message(payload)
 

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from app.config import load_configurations, configure_logging
 from .views import webhook_blueprint
 
@@ -12,5 +12,10 @@ def create_app():
 
     # Import and register blueprints, if any
     app.register_blueprint(webhook_blueprint)
+
+    # Root endpoint for health checks
+    @app.route("/", methods=["GET"])
+    def health_check():
+        return jsonify({"status": "ok", "message": "WhatsApp Bot is running"}), 200
 
     return app
